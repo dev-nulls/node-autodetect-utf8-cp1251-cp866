@@ -52,4 +52,16 @@ let ps = new Promise((resolve, reject) => {
 });
 
 ps.then(encoding => console.log(encoding));
+////////////////////////////
+// or
+////////////////////////////
+const autoenc = require('node-autodetect-utf8-cp1251-cp866');
+const fs = require('fs');
+
+fs.readFile('./any.txt', (err, buff) => {
+    if (err) {
+        throw err;
+    }
+    console.log(autoenc.detectEncoding(buff).encoding);
+});
 ```
